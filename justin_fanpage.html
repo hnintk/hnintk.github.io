@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin Bieber Fan Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #799fc0;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .container {
+            padding: 20px;
+        }
+        .bio, .gallery, .news {
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #ff66b2;
+        }
+        .carousel {
+            position: relative;
+            max-width: 50%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .carousel img {
+            width: 100%;
+            max-height: 500px;
+            display: none;
+            border-radius: 10px;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls span {
+            cursor: pointer;
+            font-size: 2em;
+            color: white;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Justin Bieber Fan Page</h1>
+    </header>
+
+    <nav>
+        <a href="#bio">About Justin</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#news">Latest News</a>
+    </nav>
+
+    <div class="container">
+        <!-- Bio Section -->
+        <section id="bio" class="bio">
+            <h2>About Justin Bieber</h2>
+            <p>Justin Drew Bieber is a Canadian singer. Regarded as a pop icon, he is recognized for his multi-genre musical performances.</p>
+        </section>
+
+        <!-- Carousel Gallery Section -->
+        <section id="gallery" class="gallery">
+            <h2>Gallery</h2>
+            <div class="carousel">
+                <img src="images/justin1.jpg" alt="Justin Bieber Image 1" class="active">
+                <img src="images/justin2.jpg" alt="Justin Bieber Image 2">
+                <img src="images/justin3.jpg" alt="Justin Bieber Image 3">
+                <img src="images/justin4.jpg" alt="Justin Bieber Image 4">
+                <img src="images/justin5.jpg" alt="Justin Bieber Image 5">
+                <img src="images/justin6.jpg" alt="Justin Bieber Image 6">
+                <div class="carousel-controls">
+                    <span id="prev">&#10094;</span>
+                    <span id="next">&#10095;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="news">
+            <h2>Latest News</h2>
+            <p>Stay tuned for the latest updates on Justin Bieber's music, tours, and more!</p>
+            <ul>
+                <li><strong>New Album Release:</strong> Justin just released his latest album! Check it out on all streaming platforms.</li>
+                <li><strong>World Tour Announced:</strong> Justin Bieber is going on a world tour starting next summer. Get your tickets now!</li>
+                <li><strong>Exclusive Interview:</strong> Justin talks about his journey and future plans in an exclusive interview with Rolling Stone.</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>Follow Justin on Social Media:</p>
+        <a href="https://twitter.com/justinbieber" style="color: white;">Twitter</a> |
+        <a href="https://www.instagram.com/justinbieber/" style="color: white;">Instagram</a> |
+        <a href="https://www.facebook.com/JustinBieber/" style="color: white;">Facebook</a> |
+        <a href="https://www.youtube.com/watch?v=kffacxfA7G4" style="color: white;">Your fav song</a>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+
+        next.addEventListener('click', showNextImage);
+        prev.addEventListener('click', showPrevImage);
+
+        // Optional: Auto-slide the carousel every 5 seconds
+        setInterval(showNextImage, 5000);
+    </script>
+
+</body>
+</html>
